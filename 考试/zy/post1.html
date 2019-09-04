@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [cloak] {
+            display: none;
+        }
+
+        .nr {
+            text-indent: 2em;
+        }
+
+        .ccc {
+            line-height: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" v-cloak>
+        <div class="lidt" v-if="list" v-for="(i,$key) in list">
+            <div class="ff">
+                {{$key=='girl'?'女生':'男生'}}
+            </div>
+            <div class="cont">
+                <div v-for="j in i">
+                    <div v-for="(a,$key) in j" class="nr">
+                        {{$key}}
+                        <div style="margin-left: 20px;">
+                            {{a.relatedName}}
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <span v-for="(b,$index) in a.list" class="ccc">
+                                {{b}}
+                                {{$index==a.list.length-1?'':'|'}}
+                            </span>
+                            <!--{{a.list}}-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                list: ''
+            },
+            created() {
+                this.$http.post('http://walden1.shuqireader.com/webapi/rank/classrelation?_=1564715035298', {
+                    type: 1,
+                    timestamp: 1564715035297,
+                    sign: 'a7a6e366514711fc44b7a2f748b1af2e',
+                    shuqi_h5: ''
+                }, { emulateJSON: true }).then((data) => {
+                    this.list = data.body.data
+                    console.log(this.list)
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

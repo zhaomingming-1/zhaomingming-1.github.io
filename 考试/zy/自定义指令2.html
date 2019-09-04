@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" v-model="value" />
+        <div style="width: 100px;height: 100px;background: seagreen;" v-lee="value">
+
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script>
+        // Vue.directive('lee', function (div, value) {
+        //     console.log(div, value)
+        //     div.innerHTML = value.value
+        // })
+        // Vue.directive('lee', {
+        //     bind(a, b) {
+        //         console.log(a, b)
+        //         a.innerHTML = b.value
+        //     }
+        // })
+        new Vue({
+            el: '#box',
+            data: {
+                value: 'a'
+            },
+            directives: {
+                // lee: {
+                //     bind(a, b) {
+                //         console.log(a,b)
+                //         a.innerHTML = b.value
+                //     }
+                // },
+                lee: function (div, value) {
+                    console.log(div, value)
+                    div.innerHTML = value.value
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -347,7 +347,10 @@ h6{display: block; font-family:'Open Sans'; font-weight:700; font-size:20px; col
 
 
 /* === */
-
+.zuoye{display: none;list-style: none;padding-left: 0;}
+.zuoye a{color: #fff;text-decoration: none;}
+.zuoye li{line-height: 40px;border-bottom: dotted 1px #000;padding-left: 20px;}
+.logo_wrapper:hover .zuoye{display: block;width: 100%;min-height:200px;background: rgba(255, 255, 255, 0.8);}
 .phone_ic{font-size: 14px; line-height: 20px; text-transform: uppercase; font-weight: 700; padding-bottom: 5px;}
 .phone_ic i{float: left; padding-right: 10px; color: #ef1165; font-size: 16px; line-height: 20px;}
 .phone_ic span{display: table;}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: block;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .item {
+            float: left;
+            margin-left: 10px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" v-cloak>
+        <input type="text" v-model="input" @keyup.enter="btn">
+        <div class="items">
+            <div class="item" v-for="i in arr">
+                <p>{{input}}</p>
+                <p>{{i.date}}</p>
+                <p>{{i.fengli}}</p>
+                <p>{{i.fengxiang}}</p>
+                <p>{{i.high}}</p>
+                <p>{{i.low}}</p>
+                <p>{{i.type}}</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                input: '北京',
+                arr: []
+            },
+            methods: {
+                btn() {
+                    this.ajax(this.input)
+                },
+                ajax(a) {
+                    this.$http.get(
+                        'https://www.apiopen.top/weatherApi',
+                        {
+                            params: {
+                                city: this.input,
+                            }
+                        }
+
+                    ).then((data) => {
+                        var res = data.body.data.forecast
+                        this.arr = res
+                        console.log(res)
+
+                    }, (err) => {
+                        console.log(err)
+                    })
+                }
+            },
+            created() {
+                this.ajax(this.input)
+            }
+        })
+    </script>
+</body>
+
+</html>

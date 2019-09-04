@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: relative;
+            width: 1200px;
+            margin: 0 auto;
+            height: 740px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .m1 {
+            color: #FFFFFF;
+            background: rgba(0, 0, 25, 0.5);
+            height: 660px;
+            overflow-y: scroll;
+            width: 400px;
+            float: left;
+            position: relative;
+
+        }
+
+        .m1 p {
+            padding-left: 20px;
+            font-size: 20px;
+        }
+
+        .ax {
+            font-size: 20px;
+            color: red;
+        }
+
+        .xx {
+            font-size: 20px;
+            color: yellow;
+            float: right;
+            margin-right: 20px;
+        }
+
+        .music {
+            font-size: 20px;
+            color: #03f4df;
+            float: right;
+            margin-right: 20px;
+        }
+
+        audio {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input v-model="str">
+        <div class="m1">
+            <h1>歌手</h1>
+            <p v-for="i in list" @click="g=i.Fsinger_mid" :style="{color:g==i.Fsinger_mid?'red':'#fff'}">
+                {{i.Fsinger_name}}
+            </p>
+        </div>
+        <div class="m1">
+            <h1>音乐列表</h1>
+            <p v-for="i in song_list" @click="songmid=i.musicData.songmid"
+                :style="{color:songmid==i.musicData.songmid?'red':'#fff'}">
+                {{i.musicData.songname}}
+            </p>
+        </div>
+        <div class="m1">
+            <h1>搜索</h1>
+            <!-- <p v-for="i in list">
+				{{i}}
+			</p> -->
+        </div>
+        <audio :src="url" autoplay controls></audio>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.js"></script>
+<script>
+    new Vue({
+        el: '#box',
+        data: {
+            g: '',
+            songmid: '',
+            arr: ['歌手', '音乐列表', '搜索'],
+            list: '',
+            song_list: '',
+            url: '',
+            str: '薛之谦',
+        },
+        watch: {
+            g(a, b) {
+                this.song_ajax()
+            },
+            songmid() {
+                this.vkey_ajax()
+            }
+        },
+        methods: {
+            vkey_ajax() {
+                this.$http.jsonp('https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg?g_tk=1278911659&hostUin=0&format=jsonp&callback=callback&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&cid=205361747&uin=0&songmid=' + this.songmid + '&filename=C400' + this.songmid + '.m4a&guid=3655047200', {
+                    jsonpCallback: 'callback'
+                }).then((data) => {
+                    var vkey = data.data.data.items[0].vkey
+                    var filename = data.data.data.items[0].filename
+                    var url = 'http://dl.stream.qqmusic.qq.com/' + filename + '?vkey=' + vkey + '&guid=3655047200&fromtag=66'
+                    this.url = url
+                })
+            },
+            song_ajax() {
+                this.$http.jsonp('https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?g_tk=5381&jsonpCallback=callback&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&singermid=' + this.g + '&order=listen&begin=0&num=30&songstatus=1', {
+                    jsonpCallback: 'callback'
+                }).then((data) => {
+                    this.song_list = data.data.data.list
+                })
+            },
+
+        },
+        created() {
+            this.$http.jsonp('https://c.y.qq.com/v8/fcg-bin/v8.fcg?channel=singer&page=list&key=all_all_all&pagesize=100&pagenum=1&g_tk=5381&jsonpCallback=callback&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0', {
+                jsonpCallback: 'callback'
+            }).then((data) => {
+                this.list = data.data.data.list
+            })
+        }
+    })
+</script>
+
+</html>

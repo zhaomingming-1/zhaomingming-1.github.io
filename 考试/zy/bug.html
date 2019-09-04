@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <div>数组：</div>
+        <div v-for='i in arr' @click='btn'>{{i}}</div>
+        <div>json:</div>
+        <div v-for='i in json' @click='btn2'>{{i}}</div>
+    </div>
+    <script src="js/vue.js"></script>
+    <!-- <script>
+		new Vue({
+			el:'#box',
+			data:{
+				arr:[1,2,3,4,5],
+				json:{
+					a:12
+				}
+			},
+			methods:{
+				btn(){
+					//通过下标该数值
+					//js
+					  // this.arr.splice(0,1,12)
+                     //vue
+                  	// this.$set(this.arr,0,12)
+                  	// 通过length改长度
+                    this.arr.length = 2
+              		this.arr = this.arr.slice(0,2)
+					console.log(this.arr)
+				},
+				btn2(){
+					// 动态创建key
+					// js
+                    // this.json.b = 23
+                    // vue
+                    this.$set(this.json,'b',23)
+					console.log(this.json)
+				}
+			}
+		})
+	</script> -->
+    <!-- <script>
+		new Vue({
+			el:'#box',
+			data:{
+				arr:[7,8,9,10,5],
+				json:{
+					a:55
+				}
+			},
+			methods:{
+				btn(){
+					//通过下标该数值
+					//js
+					// this.arr.splice(0,1,12)
+					//vue
+					this.$set(this.arr,0,12)
+					// 通过length改长度
+					// js
+					// this.arr.length=3
+					// this.arr=this.arr.slice(0,3)
+					console.log(this.arr)
+				},
+				btn2(){
+					//动态创建key
+					this.$set(this.json,'b',66)
+				}
+			}
+		})
+	</script> -->
+    <!-- <script>
+		new Vue({
+			el:'#box',
+			data:{
+				arr:[7,8,9,10,5],
+				json:{
+					a:55
+				}
+			},
+			methods:{
+				btn(){
+					//通过下标该数值
+					//js
+					// this.arr.splice(0,1,12)
+					//vue
+					this.$set(this.arr,0,12)
+					// 通过length改长度
+					// js
+					// this.arr.length=3
+					// this.arr=this.arr.slice(0,3)
+					console.log(this.arr)
+				},
+				btn2(){
+					//动态创建key
+					this.$set(this.json,'b',66)
+				}
+			}
+		})
+	</script> -->
+    <!-- <script>
+		new Vue({
+			el:'#box',
+			data:{
+				arr:[7,8,9,10,5],
+				json:{
+					a:55
+				}
+			},
+			methods:{
+				btn(){
+					//通过下标该数值
+					//js
+					// this.arr.splice(0,1,12)
+					//vue
+					this.$set(this.arr,0,12)
+					// 通过length改长度
+					// js
+					// this.arr.length=3
+					// this.arr=this.arr.slice(0,3)
+					console.log(this.arr)
+				},
+				btn2(){
+					//动态创建key
+					this.$set(this.json,'b',66)
+				}
+			}
+		})
+	</script> -->
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                arr: [7, 8, 9, 10, 5],
+                json: {
+                    a: 55
+                }
+            },
+            methods: {
+                btn() {
+                    //通过下标该数值
+                    //js
+                    // this.arr.splice(0,1,12)
+                    //vue
+                    this.$set(this.arr, 0, 12)
+                    // 通过length改长度
+                    // js
+                    // this.arr.length=3
+                    // this.arr=this.arr.slice(0,3)
+                    console.log(this.arr)
+                },
+                btn2() {
+                    //动态创建key
+                    this.$set(this.json, 'b', 66)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

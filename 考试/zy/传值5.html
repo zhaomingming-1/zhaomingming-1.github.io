@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+
+        <lee></lee>
+        <lee1></lee1>
+    </div>
+    <template id="d">
+        <div @click="btn">
+            s{{ss}}
+        </div>
+    </template>
+    <template id="d1">
+        <div @click="btn">
+            s{{ss}}
+        </div>
+    </template>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script>
+        // Vue.component('lee',{
+        //     template:'#d',
+        //     props: ['aa'],
+        //     data () {
+        //         return {
+        //             ss:this.aa
+        //         }
+        //     },
+        //     watch: {
+        //         aa(a,b){
+        //             this.ss=a
+        //         }
+        //     }
+        // })
+        // new Vue({
+        //     el:'#box',
+        //     data:{
+        //         ss:0
+        //     }
+        // })
+
+        // Vue.component('lee', {
+        //     template: '#d',
+        //     props: ['aa'],
+        //     data() {
+        //         return {
+        //             ss: this.aa
+        //         }
+        //     },
+        //     methods: {
+        //         btn() {
+        //             this.ss++
+        //             this.$emit('hh', this.ss)
+        //         }
+        //     },
+        //     watch: {
+        //         aa(a, b) {
+        //             this.ss = a
+        //         }
+        //     }
+        // })
+        // new Vue({
+        //     el: '#box',
+        //     data: {
+        //         ss: 0
+        //     },
+        //     methods: {
+        //         btn(a) {
+        //             this.ss=a
+        //             console.log(a)
+        //         }
+        //     },
+        // })
+        var bus = new Vue()
+        Vue.component('lee', {
+            template: '#d',
+            data() {
+                return {
+                    ss: 0
+                }
+            },
+            mounted() {
+                bus.$on('hh', (a) => {
+                    this.ss = a
+                })
+            },
+            methods: {
+                btn() {
+                    this.ss++
+                    bus.$emit('hh1', this.ss)
+                }
+            },
+
+        })
+        Vue.component('lee1', {
+            template: '#d1',
+            data() {
+                return {
+                    ss: 0
+                }
+            },
+            mounted() {
+                bus.$on('hh1', (a) => {
+                    this.ss = a
+                })
+            },
+            methods: {
+                btn() {
+                    this.ss++
+                    bus.$emit('hh', this.ss)
+                }
+            },
+        })
+        new Vue({
+            el: '#box',
+            data: {
+                ss: 0
+            }
+        })
+    </script>
+</body>
+
+</html>

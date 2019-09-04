@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        .lee-leave-to,
+        .lee-enter {
+            opacity: 0;
+            left: 500px !important;
+        }
+
+        .lee2-enter {
+            left: 500px !important;
+            opacity: 0;
+        }
+
+        .lee2-leave-active,
+        .lee-enter-active {
+            transition: all 1s;
+        }
+
+        .lee2-leave-to {
+            opacity: 0;
+            left: -500px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" v-cloak>
+        <lee style="text-align: center;"></lee>
+    </div>
+    <template id="lee">
+        <div>
+            <button @click="xa">下一个</button>
+            <button @click="sha">上一个</button>
+            <div style="width: 500px;margin: 0 auto;position: relative;">
+                <transition :name="t_type" v-for="(i,$index) in arr">
+                    <div style="width: 500px;position: absolute;left: 0;top: 0;" v-show="type==$index">
+                        <img :src="i" width="500px" />
+                    </div>
+                </transition>
+            </div>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <script>
+        Vue.component('lee', {
+            template: '#lee',
+            methods: {
+                xa() {
+                    this.t_type = 'lee'
+                    this.type++
+                    if (this.type >= 5) {
+                        this.type = 0
+                    }
+                },
+                sha() {
+                    this.t_type = 'lee2'
+                    this.type--
+                    if (this.type <= -1) {
+                        this.type = 4
+                    }
+                }
+            },
+            data() {
+                return {
+                    type: 0,
+                    t_type: 'lee',
+                    arr: [
+                        'images/1.jpg',
+                        'images/2.jpg',
+                        'images/3.jpg',
+                        'images/4.jpg',
+                        'images/5.jpg'
+                    ]
+                }
+            }
+        })
+        new Vue({
+            el: '#box',
+        })
+    </script>
+</body>
+
+</html>

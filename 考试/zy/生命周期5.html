@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" v-model="a">
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script>
+        new Vue({
+            el:'#box',
+            data:{
+                a:'aaaa'
+            },
+            beforeCreate () {
+                console.log(this.a)
+            },
+            created () {
+                console.log(this.a)
+            },
+            beforeMount () {
+                console.log(this.a)
+            },
+            mounted () {
+                console.log(this.a)  
+            },
+            beforeUpdate () {
+                console.log(this.a)
+            },
+            updated () {
+                console.log(this.a)
+            },
+            beforeDestroy () {
+                console.log(this.a)
+            },
+            destroyed () {
+                console.log(this.a)
+            }
+        })
+    </script>
+</body>
+
+</html>
