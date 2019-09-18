@@ -1,0 +1,114 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "677520",
+      "name": "赞",
+      "font_class": "zan",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "966101",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "1316290",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "1328397",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "1607237",
+      "name": "踩",
+      "font_class": "cai",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "2131530",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "3531262",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e517",
+      "unicode_decimal": 58647
+    },
+    {
+      "icon_id": "5491347",
+      "name": "差",
+      "font_class": "cha",
+      "unicode": "e803",
+      "unicode_decimal": 59395
+    },
+    {
+      "icon_id": "5906427",
+      "name": "下箭头",
+      "font_class": "arrow_right",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "6285631",
+      "name": "暂停",
+      "font_class": "zanting1",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "8432885",
+      "name": "返 回",
+      "font_class": "fanhui1",
+      "unicode": "e513",
+      "unicode_decimal": 58643
+    },
+    {
+      "icon_id": "8684388",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "8912785",
+      "name": "发现",
+      "font_class": "faxian",
+      "unicode": "e705",
+      "unicode_decimal": 59141
+    },
+    {
+      "icon_id": "9411141",
+      "name": "消息",
+      "font_class": "msg",
+      "unicode": "e501",
+      "unicode_decimal": 58625
+    },
+    {
+      "icon_id": "10122866",
+      "name": "我 的",
+      "font_class": "wode",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    }
+  ]
+}
